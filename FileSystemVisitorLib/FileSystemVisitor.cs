@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Abstractions;
+using System.Linq;
 
 namespace FileSystemVisitorLib
 {
@@ -62,57 +63,34 @@ namespace FileSystemVisitorLib
         /// <param name="directoryName">Path to the start folder</param>
         /// <returns>List of full path to items that are sotred from in specified folder</returns>
         /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="UnauthorizedAccessException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
         public IEnumerable<string> GetDirectoryContent(string directoryName)
         {
-            OnStart();
+            if (directoryName == null)
+            {
+                throw new ArgumentNullException(nameof(directoryName), "Directory path value cannot be null");
+            }
+
             var cancelFlag = false;
             var directory = _fileSystem.DirectoryInfo.FromDirectoryName(directoryName);
-            if (_filter != null)
+            try
             {
-                foreach (var item in GetDirectoryItems(directory, ref cancelFlag))
-                {
-                    if (!_filter(item.FullName)) continue;
-                    var eventParams = new ItemFindedEventArgs { FullName = item.FullName };
-
-                    switch (item)
-                    {
-                        case DirectoryInfoBase _:
-                        {
-                            OnFilteredDirectoryFinded(eventParams);
-                            break;
-                        }
-                        case FileInfoBase _:
-                        {
-                            OnFilteredFileFinded(eventParams);
-                            break;
-                        }
-                        default:
-                        {
-                            throw new InvalidCastException();
-                        }
-                    }
-
-                    if (eventParams.CancelSearching)
-                    {
-                        yield return item.FullName;
-                        OnFinish();
-                        yield break;
-
-                    }
-
-                    if (!eventParams.ExceptItemFromResult)
-                    {
-                        yield return item.FullName;
-                    }
-                }
+                directory.GetDirectories().Any();
             }
-            else
+            catch (DirectoryNotFoundException e)
             {
-                foreach (var item in GetDirectoryItems(directory, ref cancelFlag))
-                {
-                    yield return item.FullName;
-                }
+                throw new ArgumentException($"Incorrect start path: {directory.FullName}", e);
             }
+
+            OnStart();
+            foreach (var item in _filter != null
+                ? GetDirectoryItemsWithFilter(directory, ref cancelFlag)
+                : GetDirectoryItems(directory, ref cancelFlag))
+            {
+                yield return item.FullName;
+            }
+
             OnFinish();
         }
 
@@ -131,17 +109,7 @@ namespace FileSystemVisitorLib
                 return result;
             }
 
-            IEnumerable<DirectoryInfoBase> directories;
-            try
-            {
-                directories = dir.EnumerateDirectories();
-            }
-            catch (DirectoryNotFoundException e)
-            {
-                throw new ArgumentException($"Incorrect start path: {dir.FullName}", e);
-            }
-
-            foreach (var directory in directories)
+            foreach (var directory in dir.EnumerateDirectories())
             {
                 var eventParams = new ItemFindedEventArgs { FullName = directory.FullName };
                 OnDirectoryFinded(eventParams);
@@ -183,6 +151,93 @@ namespace FileSystemVisitorLib
             }
             return result;
         }
+
+
+        /// <summary>
+        /// Returns filtered directories and files that are stored in the specified directory 
+        /// </summary>
+        /// <param name="dir">Start directory</param>
+        /// <param name="cancelRecursionFlag">Flag to cancel searching</param>
+        /// <returns>Filtered directories and files that are stored in the specified directory</returns>
+        private IEnumerable<FileSystemInfoBase> GetDirectoryItemsWithFilter(DirectoryInfoBase dir, ref bool cancelRecursionFlag)
+        {
+            var result = new List<FileSystemInfoBase>();
+
+            if (cancelRecursionFlag)
+            {
+                return result;
+            }
+
+            foreach (var directory in dir.EnumerateDirectories())
+            {
+                var eventParams = new ItemFindedEventArgs { FullName = directory.FullName };
+                OnDirectoryFinded(eventParams);
+
+                if (eventParams.CancelSearching)
+                {
+                    cancelRecursionFlag = true;
+                    result.Add(directory);
+                    return result;
+                }
+
+                if (eventParams.ExceptItemFromResult) continue;
+
+                if (_filter(directory.FullName))
+                {
+                    OnFilteredDirectoryFinded(eventParams);
+
+                    if (eventParams.CancelSearching)
+                    {
+                        cancelRecursionFlag = true;
+                        result.Add(directory);
+                        return result;
+                    }
+
+                    if (!eventParams.ExceptItemFromResult)
+                    {
+                        result.Add(directory);
+                    }
+                }
+
+                result.AddRange(GetDirectoryItemsWithFilter(directory, ref cancelRecursionFlag));
+                if (cancelRecursionFlag)
+                {
+                    return result;
+                }
+            }
+            foreach (var fileInfo in dir.EnumerateFiles())
+            {
+
+                var eventParams = new ItemFindedEventArgs { FullName = fileInfo.FullName };
+                OnFileFinded(eventParams);
+
+                if (eventParams.CancelSearching)
+                {
+                    cancelRecursionFlag = true;
+                    result.Add(fileInfo);
+                    return result;
+                }
+
+                if (eventParams.ExceptItemFromResult) continue;
+                if (!_filter(fileInfo.FullName)) continue;
+
+                OnFilteredFileFinded(eventParams);
+
+                if (eventParams.CancelSearching)
+                {
+                    cancelRecursionFlag = true;
+                    result.Add(fileInfo);
+                    return result;
+                }
+
+                if (eventParams.ExceptItemFromResult) continue;
+
+                result.Add(fileInfo);
+
+            }
+            return result;
+        }
+
 
         /// <summary>
         /// Occures before search starts
