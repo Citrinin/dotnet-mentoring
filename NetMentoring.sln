@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2000
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSystemVisitorLib", "FileSystemVisitorLib\FileSystemVisitorLib.csproj", "{0DD88D04-16C9-4F3B-981C-CDC66F820DCE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Advanced C Sharp", "1 - Advanced C Sharp", "{95C26369-C869-400B-9373-1110A32BD709}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSystemVisitorLibTests", "FileSystemVisitorLibTests\FileSystemVisitorLibTests.csproj", "{E8451C7E-DB84-42C6-B189-99208F9CDF94}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0DD88D04-16C9-4F3B-981C-CDC66F820DCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DD88D04-16C9-4F3B-981C-CDC66F820DCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DD88D04-16C9-4F3B-981C-CDC66F820DCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DD88D04-16C9-4F3B-981C-CDC66F820DCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8451C7E-DB84-42C6-B189-99208F9CDF94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8451C7E-DB84-42C6-B189-99208F9CDF94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8451C7E-DB84-42C6-B189-99208F9CDF94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8451C7E-DB84-42C6-B189-99208F9CDF94}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0DD88D04-16C9-4F3B-981C-CDC66F820DCE} = {95C26369-C869-400B-9373-1110A32BD709}
+		{E8451C7E-DB84-42C6-B189-99208F9CDF94} = {95C26369-C869-400B-9373-1110A32BD709}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BCFBFF19-6151-41EC-BE1D-A1EFE1331FEF}
+	EndGlobalSection
+EndGlobal
