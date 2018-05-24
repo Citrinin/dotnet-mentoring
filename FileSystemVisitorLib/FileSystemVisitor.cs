@@ -121,14 +121,15 @@ namespace FileSystemVisitorLib
                     return result;
                 }
 
-                if (!eventParams.ExceptItemFromResult)
+                if (!eventParams.ExcludeItemFromResult)
                 {
                     result.Add(directory);
-                    result.AddRange(GetDirectoryItems(directory, ref cancelRecursionFlag));
-                    if (cancelRecursionFlag)
-                    {
-                        return result;
-                    }
+                }
+
+                result.AddRange(GetDirectoryItems(directory, ref cancelRecursionFlag));
+                if (cancelRecursionFlag)
+                {
+                    return result;
                 }
             }
             foreach (var fileInfo in dir.EnumerateFiles())
@@ -144,7 +145,7 @@ namespace FileSystemVisitorLib
                     return result;
                 }
 
-                if (!eventParams.ExceptItemFromResult)
+                if (!eventParams.ExcludeItemFromResult)
                 {
                     result.Add(fileInfo);
                 }
@@ -180,7 +181,7 @@ namespace FileSystemVisitorLib
                     return result;
                 }
 
-                if (eventParams.ExceptItemFromResult) continue;
+                if (eventParams.ExcludeItemFromResult) continue;
 
                 if (_filter(directory.FullName))
                 {
@@ -193,7 +194,7 @@ namespace FileSystemVisitorLib
                         return result;
                     }
 
-                    if (!eventParams.ExceptItemFromResult)
+                    if (!eventParams.ExcludeItemFromResult)
                     {
                         result.Add(directory);
                     }
@@ -218,7 +219,7 @@ namespace FileSystemVisitorLib
                     return result;
                 }
 
-                if (eventParams.ExceptItemFromResult) continue;
+                if (eventParams.ExcludeItemFromResult) continue;
                 if (!_filter(fileInfo.FullName)) continue;
 
                 OnFilteredFileFinded(eventParams);
@@ -230,7 +231,7 @@ namespace FileSystemVisitorLib
                     return result;
                 }
 
-                if (eventParams.ExceptItemFromResult) continue;
+                if (eventParams.ExcludeItemFromResult) continue;
 
                 result.Add(fileInfo);
 

@@ -12,7 +12,7 @@
         /// <summary>
         /// Gets or sets flag to except item from result
         /// </summary>
-        public bool ExceptItemFromResult { get; set; }
+        public bool ExcludeItemFromResult { get; set; }
         /// <summary>
         /// Gets or sets full path to found item
         /// </summary>
