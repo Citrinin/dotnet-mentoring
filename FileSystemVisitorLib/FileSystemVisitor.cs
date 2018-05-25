@@ -95,6 +95,95 @@ namespace FileSystemVisitorLib
         }
 
         /// <summary>
+        /// Occures before search starts
+        /// </summary>
+        public event EventHandler Start;
+
+        /// <summary>
+        /// Occures after search ends
+        /// </summary>
+        public event EventHandler Finish;
+
+        /// <summary>
+        /// Occures when any file in the specified directory is found
+        /// </summary>
+        public event EventHandler<ItemFindedEventArgs> FileFinded;
+
+        /// <summary>
+        /// Occures when any folder in the specified directory is found
+        /// </summary>
+        public event EventHandler<ItemFindedEventArgs> DirectoryFinded;
+
+        /// <summary>
+        /// Occures when file in the specified directory that match filter is found
+        /// </summary>
+        public event EventHandler<ItemFindedEventArgs> FilteredFileFinded;
+
+        /// <summary>
+        /// Occures when folder in the specified directory that match filter is found
+        /// </summary>
+        public event EventHandler<ItemFindedEventArgs> FilteredDirectoryFinded;
+
+        /// <summary>
+        /// Raises the FileSystemVisitor Start event
+        /// </summary>
+        protected virtual void OnStart()
+        {
+            var tmp = Start;
+            tmp?.Invoke(this, EventArgs.Empty);
+        }
+
+        /// <summary>
+        /// Raises the FileSystemVisitor Finish event
+        /// </summary>
+        protected virtual void OnFinish()
+        {
+            var tmp = Finish;
+            tmp?.Invoke(this, EventArgs.Empty);
+        }
+
+        /// <summary>
+        /// Raises the FileSystemVisitor FileFinded event
+        /// </summary>
+        /// <param name="args">The event data for the FileFinded event</param>
+        protected virtual void OnFileFinded(ItemFindedEventArgs args)
+        {
+            var tmp = FileFinded;
+            tmp?.Invoke(this, args);
+        }
+
+        /// <summary>
+        /// Raises the FileSystemVisitor DirectoryFinded event
+        /// </summary>
+        /// <param name="args">The event data for the DirectoryFinded event</param>
+        protected virtual void OnDirectoryFinded(ItemFindedEventArgs args)
+        {
+            var tmp = DirectoryFinded;
+            tmp?.Invoke(this, args);
+        }
+
+        /// <summary>
+        /// Raises the FileSystemVisitor FilteredFileFinded event
+        /// </summary>
+        /// <param name="args">The event data for the FilteredFileFinded event</param>
+        protected virtual void OnFilteredFileFinded(ItemFindedEventArgs args)
+        {
+            var tmp = FilteredFileFinded;
+            tmp?.Invoke(this, args);
+        }
+
+        /// <summary>
+        /// Raises the FileSystemVisitor FilteredDirectoryFinded event
+        /// </summary>
+        /// <param name="args">The event data for the FilteredDirectoryFinded event</param>
+        protected virtual void OnFilteredDirectoryFinded(ItemFindedEventArgs args)
+        {
+            var tmp = FilteredDirectoryFinded;
+            tmp?.Invoke(this, args);
+        }
+
+
+        /// <summary>
         /// Returns directories and files that are stored in the specified directory
         /// </summary>
         /// <param name="dir">Start directory</param>
@@ -239,94 +328,6 @@ namespace FileSystemVisitorLib
             return result;
         }
 
-
-        /// <summary>
-        /// Occures before search starts
-        /// </summary>
-        public event EventHandler Start;
-
-        /// <summary>
-        /// Occures after search ends
-        /// </summary>
-        public event EventHandler Finish;
-
-        /// <summary>
-        /// Occures when any file in the specified directory is found
-        /// </summary>
-        public event EventHandler<ItemFindedEventArgs> FileFinded;
-
-        /// <summary>
-        /// Occures when any folder in the specified directory is found
-        /// </summary>
-        public event EventHandler<ItemFindedEventArgs> DirectoryFinded;
-
-        /// <summary>
-        /// Occures when file in the specified directory that match filter is found
-        /// </summary>
-        public event EventHandler<ItemFindedEventArgs> FilteredFileFinded;
-
-        /// <summary>
-        /// Occures when folder in the specified directory that match filter is found
-        /// </summary>
-        public event EventHandler<ItemFindedEventArgs> FilteredDirectoryFinded;
-
-        /// <summary>
-        /// Raises the FileSystemVisitor Start event
-        /// </summary>
-        protected virtual void OnStart()
-        {
-            var tmp = Start;
-            tmp?.Invoke(this, EventArgs.Empty);
-        }
-
-        /// <summary>
-        /// Raises the FileSystemVisitor Finish event
-        /// </summary>
-        protected virtual void OnFinish()
-        {
-            var tmp = Finish;
-            tmp?.Invoke(this, EventArgs.Empty);
-        }
-
-        /// <summary>
-        /// Raises the FileSystemVisitor FileFinded event
-        /// </summary>
-        /// <param name="args">The event data for the FileFinded event</param>
-        protected virtual void OnFileFinded(ItemFindedEventArgs args)
-        {
-            var tmp = FileFinded;
-            tmp?.Invoke(this, args);
-        }
-
-        /// <summary>
-        /// Raises the FileSystemVisitor DirectoryFinded event
-        /// </summary>
-        /// <param name="args">The event data for the DirectoryFinded event</param>
-        protected virtual void OnDirectoryFinded(ItemFindedEventArgs args)
-        {
-            var tmp = DirectoryFinded;
-            tmp?.Invoke(this, args);
-        }
-
-        /// <summary>
-        /// Raises the FileSystemVisitor FilteredFileFinded event
-        /// </summary>
-        /// <param name="args">The event data for the FilteredFileFinded event</param>
-        protected virtual void OnFilteredFileFinded(ItemFindedEventArgs args)
-        {
-            var tmp = FilteredFileFinded;
-            tmp?.Invoke(this, args);
-        }
-
-        /// <summary>
-        /// Raises the FileSystemVisitor FilteredDirectoryFinded event
-        /// </summary>
-        /// <param name="args">The event data for the FilteredDirectoryFinded event</param>
-        protected virtual void OnFilteredDirectoryFinded(ItemFindedEventArgs args)
-        {
-            var tmp = FilteredDirectoryFinded;
-            tmp?.Invoke(this, args);
-        }
     }
 }
 
