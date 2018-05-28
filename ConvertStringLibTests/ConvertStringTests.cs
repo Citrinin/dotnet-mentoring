@@ -52,7 +52,7 @@ namespace ConvertStringLib.Tests
         public void ConvertToIntTest_ContainsLetter()
         {
             var converter = new ConvertString();
-            converter.ConvertToInt("+0d");
+            converter.ConvertToInt("10d");
         }
 
         [TestMethod()]

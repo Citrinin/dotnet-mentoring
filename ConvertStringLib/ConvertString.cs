@@ -27,7 +27,7 @@ namespace ConvertStringLib
 
             if (!regex.IsMatch(source))
             {
-                throw new ArgumentException($"String must contain only numbers or sign symbol. {source} is vrong value", nameof(source));
+                throw new ArgumentException($"String must contain only numbers or sign symbol. \"{source}\" is vrong value", nameof(source));
             }
 
             bool positive;
@@ -68,7 +68,7 @@ namespace ConvertStringLib
             }
             catch (OverflowException e)
             {
-                throw new ArgumentException($"String {source} is to loong to int32 value", e);
+                throw new ArgumentException($"String \"{source}\" is to long to be int32 value", e);
             }
         }
     }
