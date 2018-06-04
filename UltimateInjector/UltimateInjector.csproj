@@ -44,7 +44,9 @@
     <Compile Include="ExportAttribute.cs" />
     <Compile Include="ImportAttribute.cs" />
     <Compile Include="ImportConstructorAttribute.cs" />
+    <Compile Include="InjectionException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TypeIsNotAssignedException.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

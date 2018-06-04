@@ -17,6 +17,8 @@ namespace TestProject
             container.AddAssembly(Assembly.GetExecutingAssembly());
 
             var x = container.CreateInstance<ICustomer>();
+            Console.WriteLine(typeof(ICustomer).IsAssignableFrom(typeof(Customer)));
+            Console.WriteLine(typeof(Person).IsAssignableFrom(typeof(ChildOfPerson)));
             Console.ReadKey();
         }
     }
@@ -41,7 +43,9 @@ namespace TestProject
 
         public Customer(Product product, Shop shop, Person person)
         {
-
+            Product = product;
+            Shop = shop;
+            Person = person;
         }
 
         public Person Person { get; set; }
@@ -55,6 +59,11 @@ namespace TestProject
 
     [Export]
     public class Person { }
+
+    public class ChildOfPerson : Person
+    {
+
+    }
 
     [Export]
     public class Product { }
