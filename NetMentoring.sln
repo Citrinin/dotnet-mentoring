@@ -6,10 +6,16 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSystemVisitorLib", "FileSystemVisitorLib\FileSystemVisitorLib.csproj", "{0DD88D04-16C9-4F3B-981C-CDC66F820DCE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Advanced C Sharp", "1 - Advanced C Sharp", "{95C26369-C869-400B-9373-1110A32BD709}"
+	ProjectSection(SolutionItems) = preProject
+		tasks NetMentoring\01. Advanced C#\Task.docx = tasks NetMentoring\01. Advanced C#\Task.docx
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSystemVisitorLibTests", "FileSystemVisitorLibTests\FileSystemVisitorLibTests.csproj", "{E8451C7E-DB84-42C6-B189-99208F9CDF94}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Exception handling", "2 - Exception handling", "{FE2F8E2D-F7A3-47AD-87F9-C888C0CB59BC}"
+	ProjectSection(SolutionItems) = preProject
+		tasks NetMentoring\02. Exception handling\Task.docx = tasks NetMentoring\02. Exception handling\Task.docx
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstSymbol", "FirstSymbol\FirstSymbol.csproj", "{C60769C6-1096-4EB3-B493-885BA38F91BB}"
 EndProject
@@ -18,18 +24,36 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConvertStringLibTests", "ConvertStringLibTests\ConvertStringLibTests.csproj", "{6950F0B3-ED02-4D96-9464-2FD3D74593EB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - LINQ", "3 - LINQ", "{357F2534-B0C3-475A-8F8D-CE9F2FE23C31}"
+	ProjectSection(SolutionItems) = preProject
+		tasks NetMentoring\03. LINQ\task.docx = tasks NetMentoring\03. LINQ\task.docx
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task", "Task\Task.csproj", "{C770ED8F-6F5E-4DED-92C6-D5FE544DE764}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - BCL", "4 - BCL", "{9216336C-A639-4C26-859A-1C828B3500A8}"
+	ProjectSection(SolutionItems) = preProject
+		tasks NetMentoring\04. BCL\task.docx = tasks NetMentoring\04. BCL\task.docx
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileService", "FileService\FileService.csproj", "{9BBFA1B4-E2B8-4C51-A67A-09FA691FCA43}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Reflection", "5 - Reflection", "{F8D062CB-39E2-478D-A646-8606BDD9FA84}"
+	ProjectSection(SolutionItems) = preProject
+		tasks NetMentoring\05. Reflection\Task.docx = tasks NetMentoring\05. Reflection\Task.docx
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UltimateInjector", "UltimateInjector\UltimateInjector.csproj", "{B2A4194E-728E-422D-8C0B-6A5E356DEC53}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UltimateInjectorTests", "UltimateInjectorTests\UltimateInjectorTests.csproj", "{886EA72E-DD48-43B4-9765-31D75178CA07}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Basic XML", "6 - Basic XML", "{5BF06E05-6CE8-40A0-848F-1EA19E8B468B}"
+	ProjectSection(SolutionItems) = preProject
+		tasks NetMentoring\06. Basic XML\Task.docx = tasks NetMentoring\06. Basic XML\Task.docx
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library", "Library\Library.csproj", "{182D1098-2A64-4F95-8B0F-49F84D5F01FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryTests", "LibraryTests\LibraryTests.csproj", "{AA7FA9E4-C16D-4359-8F2A-C0DDB12A3F1A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +97,14 @@ Global
 		{886EA72E-DD48-43B4-9765-31D75178CA07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{886EA72E-DD48-43B4-9765-31D75178CA07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{886EA72E-DD48-43B4-9765-31D75178CA07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{182D1098-2A64-4F95-8B0F-49F84D5F01FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{182D1098-2A64-4F95-8B0F-49F84D5F01FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{182D1098-2A64-4F95-8B0F-49F84D5F01FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{182D1098-2A64-4F95-8B0F-49F84D5F01FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA7FA9E4-C16D-4359-8F2A-C0DDB12A3F1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA7FA9E4-C16D-4359-8F2A-C0DDB12A3F1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA7FA9E4-C16D-4359-8F2A-C0DDB12A3F1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA7FA9E4-C16D-4359-8F2A-C0DDB12A3F1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +119,8 @@ Global
 		{9BBFA1B4-E2B8-4C51-A67A-09FA691FCA43} = {9216336C-A639-4C26-859A-1C828B3500A8}
 		{B2A4194E-728E-422D-8C0B-6A5E356DEC53} = {F8D062CB-39E2-478D-A646-8606BDD9FA84}
 		{886EA72E-DD48-43B4-9765-31D75178CA07} = {F8D062CB-39E2-478D-A646-8606BDD9FA84}
+		{182D1098-2A64-4F95-8B0F-49F84D5F01FC} = {5BF06E05-6CE8-40A0-848F-1EA19E8B468B}
+		{AA7FA9E4-C16D-4359-8F2A-C0DDB12A3F1A} = {5BF06E05-6CE8-40A0-848F-1EA19E8B468B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BCFBFF19-6151-41EC-BE1D-A1EFE1331FEF}
