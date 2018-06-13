@@ -55,6 +55,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library", "Library\Library.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryTests", "LibraryTests\LibraryTests.csproj", "{AA7FA9E4-C16D-4359-8F2A-C0DDB12A3F1A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "7 - Basic SQL", "7 - Basic SQL", "{A1620CC6-99D4-4609-B686-3340FF66A586}"
+	ProjectSection(SolutionItems) = preProject
+		..\SQLQuery1.sql = ..\SQLQuery1.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
