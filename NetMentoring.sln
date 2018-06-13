@@ -58,6 +58,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "7 - Basic SQL", "7 - Basic SQL", "{A1620CC6-99D4-4609-B686-3340FF66A586}"
 	ProjectSection(SolutionItems) = preProject
 		..\SQLQuery1.sql = ..\SQLQuery1.sql
+		tasks NetMentoring\07. Basic SQL\Task\Task.docx = tasks NetMentoring\07. Basic SQL\Task\Task.docx
 	EndProjectSection
 EndProject
 Global
